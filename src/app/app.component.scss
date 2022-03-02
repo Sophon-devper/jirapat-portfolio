@@ -1,0 +1,134 @@
+$menu-text-shadow: 3px 2px 3px rgba(0, 0, 0, 1);
+
+@mixin transistion ($property, $duration, $timing, $delay) {
+    transition-property: $property;
+    transition-duration: $duration;
+    transition-timing-function: $timing;
+    transition-delay: $delay;
+
+    -moz-transition-property: $property;
+    -moz-transition-duration: $duration;
+    -moz-transition-timing-function: $timing;
+    -moz-transition-delay: $delay;
+
+    -ms-transition-property: $property;
+    -ms-transition-duration: $duration;
+    -ms-transition-timing-function: $timing;
+    -ms-transition-delay: $delay;
+
+    -o-transition-property: $property;
+    -o-transition-duration: $duration;
+    -o-transition-timing-function: $timing;
+    -o-transition-delay: $delay;
+}
+
+nav.sticky {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background-color: #B983FF;
+
+    .nav-container {
+        position: relative;
+
+        .nav-content {
+            display: flex;
+            height: 70px;
+            justify-content: space-between;
+            transition: padding 0.2s linear;
+
+            .main-logo {
+                position: relative;
+                top: 20px;
+                font-size: 50px;
+                color: white;
+                cursor: pointer;
+                font-family: "caramel-vanilla";
+                text-shadow: 5px 5px 10px rgba(0, 0, 0, 0.69);
+
+                div:nth-child(2) {
+                    margin-top: 38px;
+                    margin-left: 40px;
+                }
+            }
+
+            .menu-container {
+                padding: 10px 0px;
+
+                button {
+                    color: white;
+                    border: 0px solid;
+                    cursor: pointer;
+                    background: none;
+                    font-size: 18px;
+                    padding: 0px 15px;
+                    outline: none;
+                    font-family: "Balsamiq-bold";
+                    text-shadow: $menu-text-shadow;
+                    border-top-left-radius: 8px;
+                    border-top-right-radius: 8px;
+                    @include transistion(background-color, 200ms, linear, 0s);
+
+                    &:last-child {
+                        background-color: #FC4F4F;
+                        border-radius: 8px;
+                    }
+
+                    &:not(:last-child):hover {
+                        border-bottom: 4px solid #99FEFF;
+                    }
+
+                    &:not(:last-child):active {
+                        border-bottom: 4px solid #99FEFF;
+                        background-color: rgba(0, 0, 0, 0.2);
+                    }
+                }
+            }
+
+            .menu-list {
+                color: white;
+                margin: auto 20px;
+
+                .btn-menu-list {
+                    text-shadow: $menu-text-shadow;
+                }
+            }
+        }
+    }
+
+    .path-curve {
+        position: absolute;
+        width: 100%;
+        z-index: -1;
+    }
+}
+
+@media screen and (min-width: 1000px) {
+    .nav-content {
+        padding: 5px 100px 5px 100px;
+
+        .menu-container {
+            display: flex;
+        }
+
+        .menu-list {
+            display: none;
+        }
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .nav-content {
+        padding: 5px 50px 5px 50px;
+
+        .menu-container {
+            display: none;
+        }
+
+        .menu-list {
+            display: block;
+
+        }
+    }
+}
